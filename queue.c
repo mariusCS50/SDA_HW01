@@ -1,7 +1,7 @@
 /* GAIBU Marius - 315CB */
 #include "queue.h"
 
-// Crează coada de comenzi
+// Creates the command queue
 TQueue create_cmd_queue() {
     TQueue cmdQ = (TQueue)malloc(sizeof(Queue));
     if (!cmdQ) return NULL;
@@ -9,7 +9,7 @@ TQueue create_cmd_queue() {
     return cmdQ;
 }
 
-// Distruge și eliberează coada de comenzi
+// Destroys and frees the command queue
 void destroy_cmd_queue(TQueue* cmdQ) {
     TList p = (*cmdQ)->head, aux = NULL;
     (*cmdQ)->head = (*cmdQ)->tail = NULL;
@@ -24,7 +24,7 @@ void destroy_cmd_queue(TQueue* cmdQ) {
     free(*cmdQ);
 }
 
-// Adaugă o comandă în coadă
+// Adds a command to the queue
 void add_command(TQueue cmdQ, char* cmd) {
     TList aux = (TList)malloc(sizeof(TCell));
     if (!aux) return;
@@ -45,7 +45,7 @@ void add_command(TQueue cmdQ, char* cmd) {
     }
 }
 
-// Execută prima comandă din coadă
+// Executes the first command from the queue
 void execute_command(FILE* fout, TQueue* cmdQ, Train t) {
     if ((*cmdQ)->head == NULL) return;
     TList aux = (*cmdQ)->head;
@@ -92,7 +92,7 @@ void execute_command(FILE* fout, TQueue* cmdQ, Train t) {
     free(aux);
 }
 
-// Inversează ordinea comenzilor din coadă
+// Reverses the order of commands in the queue
 void switch_queue(TQueue* cmdQ) {
     TList L = (*cmdQ)->head, aux = NULL;
 

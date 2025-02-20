@@ -3,23 +3,23 @@
 #include <stdio.h>
 #include <string.h>
 
-// Structura care reprezintă un vagon al trenului
+// Structure representing a train wagon
 typedef struct wagon {
     char code;
     struct wagon *prev, *next;
 } *Wagon;
 
-// Structura care reprezintă trenul
+// Structure representing the train
 typedef struct train {
     Wagon locomotive, current_wagon;
 } *Train;
 
-// Funcții de creare și distrugere a trenului
+// Functions for creating and destroying the train
 Wagon create_wagon(char c);
 Train create_train();
 void destroy_train(Train* t);
 
-// Operații de tip UPDATE
+// UPDATE operations
 void move_left(Train t);
 void move_right(Train t);
 void write(Train t, char c);
@@ -28,11 +28,11 @@ void clear_all(Train t);
 void insert_left(FILE* fout, Train t, char c);
 void insert_right(Train t, char c);
 
-// Operații de tip SEARCH
+// SEARCH operations
 void search(FILE* fout, Train t, char* s);
 void search_left(FILE* fout, Train t, char* s);
 void search_right(FILE* fout, Train t, char* s);
 
-// Operații de tip QUERY
+// QUERY operations
 void show_current(FILE* fout, Train t);
 void show(FILE *fout, Train t);
